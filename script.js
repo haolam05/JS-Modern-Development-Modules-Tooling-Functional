@@ -67,3 +67,17 @@ ShoppingCart2.addToCart('apple', 4); // 4 apple added to cart. Shipping cost is 
 ShoppingCart2.addToCart('banana', 22); // 22 banana added to cart. Shipping cost is $10
 ShoppingCart2.addToCart('orange', 14); // 14 orange added to cart. Shipping cost is $10
 console.log(ShoppingCart2);
+
+// Browser API for deep copy
+const state = {
+  cart: [
+    { product: 'bread', quantity: 5 },
+    { product: 'cheese', quantity: 3 },
+  ],
+  user: { loggedIn: true },
+};
+
+const stateClone = structuredClone(state);
+state.user.loggedIn = false;
+state.cart[0].product = 'curd';
+console.log(stateClone);
