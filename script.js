@@ -18,3 +18,23 @@ add('breads', 432);
 console.log(cart);
 // => prove that import and export are live-connection, bc the first time cart export, it is an empty array
 //      but, when printed to the console here, it has the values that we had added
+
+// Top-level await
+console.log('Start fetching');
+const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+const data = await res.json();
+console.log(data);
+console.log(
+  'this will be executed AFTER the fetched data bc top-level await blocks the main thread of execution'
+);
+
+const getLastPost = async function () {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
+  return { title: data.at(-1).title, text: data.at(-1).body };
+};
+// Not very clean
+// getLastPost().then(last => console.log(last));
+const lastPost2 = await getLastPost();
+console.log(lastPost2);
+console.log('==============================================================');
