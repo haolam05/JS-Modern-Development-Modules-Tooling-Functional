@@ -38,3 +38,32 @@ const getLastPost = async function () {
 const lastPost2 = await getLastPost();
 console.log(lastPost2);
 console.log('==============================================================');
+
+const ShoppingCart2 = (function () {
+  const cart = [];
+  const shippingCost = 10;
+  const totalPrice = 234;
+  const totalQuantity = 50;
+
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(
+      `${quantity} ${product} added to cart. Shipping cost is $${shippingCost}`
+    );
+  };
+
+  const ordeStock = function (product, quantity) {
+    console.log(`${quantity} ${product} ordered from supplier.`);
+  };
+
+  return {
+    addToCart,
+    cart,
+    totalPrice,
+    totalQuantity,
+  };
+})();
+ShoppingCart2.addToCart('apple', 4); // 4 apple added to cart. Shipping cost is $10
+ShoppingCart2.addToCart('banana', 22); // 22 banana added to cart. Shipping cost is $10
+ShoppingCart2.addToCart('orange', 14); // 14 orange added to cart. Shipping cost is $10
+console.log(ShoppingCart2);
